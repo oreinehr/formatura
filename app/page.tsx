@@ -63,11 +63,6 @@ export default function LusionWebsite() {
             ))}
           </nav>
 
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </Button>
-        </div>
-      </motion.header>
 
      
 
@@ -195,7 +190,7 @@ export default function LusionWebsite() {
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6">Localização</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Espero você na Escola Técnica Estadual Monteiro Lobato! Confira mais informações abaixo:
+              Espero você! Confira mais informações abaixo:
             </p>
           </motion.div>
 
