@@ -29,7 +29,7 @@ export default function LusionWebsite() {
       <motion.div
         className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
         animate={{
-          x: mousePosition.x - 8,
+          x: mousePosition.x - 8, 
           y: mousePosition.y - 8,
         }}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
