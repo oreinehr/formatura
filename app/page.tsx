@@ -63,8 +63,40 @@ export default function LusionWebsite() {
             ))}
           </nav>
 
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </Button>
+        </div>
+      </motion.header>
 
-     
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-30 bg-black md:hidden"
+          >
+            <div className="flex flex-col items-center justify-center h-full space-y-8">
+              {["Work", "About", "Services", "Contact"].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-2xl hover:text-gray-300 transition-colors"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -139,19 +171,14 @@ export default function LusionWebsite() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <a
-  href="https://www.bing.com/maps?&mepi=56~Directions~Embedded~Direction_Button&ty=0&rtp=pos.-29.572795867919922_-50.78944396972656__Quiero%20Caf%C3%A9__e_~&mode=d&v=2&sV=1"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg group">
-    Localização
-    <motion.div className="ml-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
-      <ArrowRight className="w-5 h-5" />
-    </motion.div>
-  </Button>
-</a>
-
+              <a href="https://maps.app.goo.gl/3vydLZtp9DR4FopQ8">
+              <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg group">
+                Localização
+                <motion.div className="ml-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
+                  <ArrowRight className="w-5 h-5" />
+                </motion.div>
+              </Button>
+                </a>
               <Button
                 variant="outline"
                 size="lg"
@@ -190,7 +217,7 @@ export default function LusionWebsite() {
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6">Localização</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Espero você! Confira mais informações abaixo:
+              Espero você na Estação 183 em Parobé! Confira mais informações abaixo:
             </p>
           </motion.div>
 
@@ -198,17 +225,17 @@ export default function LusionWebsite() {
             {[
               {
                 title: "Data",
-                description: "Sábado, dia 09 de Agosto de 2025",
+                description: "Sábado, dia 09 de Agosto de 2025, 22:30",
                 icon: "📅",
               },
               {
                 title: "Endereço",
-                description: "Rua Osvaldo Cruz 309, Igrejinha, RS, 95650-000 ·",
+                description: "Rua: João Mosmann, N°: - Centro, Parobé - RS, 95630-000",
                 icon: "🎈",
               },
               {
                 title: "Janta",
-                description: "Quiero Café, Igrejinha",
+                description: "Estação 183 Parobé",
                 icon: "😋",
               },
             ].map((service, index) => (
